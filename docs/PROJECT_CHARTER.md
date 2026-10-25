@@ -2,10 +2,10 @@
 
 | Field   | Value                         |
 |---------|-------------------------------|
-| Version | 0.3 (draft)                   |
+| Version | 0.4 (draft)                   |
 | Status  | Under discussion              |
 | Owner   | Lorenzo Ferreira              |
-| Updated | 2026-10-24                    |
+| Updated | 2026-10-25                    |
 
 > This document sets the overall direction of the project. It does not specify any one feature.
 > Each SDD cycle (BRAINSTORM → DEFINE → DESIGN → BUILD → SHIP) should trace back to it.
@@ -170,9 +170,12 @@ is cited and fact-checked) can create new domains. The existing domains cover da
 cloud only, with no process engineering or ML methods.
 
 - **Policy: project KBs live in the repo**, are version-controlled, and are reviewed through PRs.
-  By default agentspec writes new domains into the plugin's install folder, which is
-  versioned and would be lost on plugin updates. Spike M0.3 settles the mechanism
-  (how agentspec discovers KBs, and whether to point it at the repo or sync copies).
+  By default agentspec writes new domains into the plugin's per-version install folder, which
+  would be lost on plugin updates.
+- **Mechanism (ADR-001, #4):** domains live in `.claude/kb/`, registered in
+  `.claude/kb/_index.yaml`. `CLAUDE.md` declares it as a second KB root for reading and the only
+  target for writing; agents that are delegated KB work get these rules in their prompt.
+  Findings: `docs/research/kb-location.md`.
 - **Build them when needed:** a domain is created when a milestone needs it, not up front.
 - **Use `--validated` for foundational domains** that agents will treat as ground truth.
 - KBs ground the agents. They are not study notes, but reviewing their content is part of the learning.
@@ -202,7 +205,7 @@ cloud only, with no process engineering or ML methods.
 | 3 | If no public dataset meets the criteria, do we relax §4 and allow our own simulations? | This would be a deliberate change of direction, and would bump the charter's major version. | Milestone 0 |
 | 4 | Which learning resources go with each pillar (books, courses, papers)? | Optional, but useful for depth-first study. | Collect as milestones progress |
 | 5 | Does the chosen data science method fit a one-person learning project, or does it add process overhead? | Adapt it rather than adopt it wholesale. | M0.2 ADR |
-| 6 | Can agentspec use KBs stored in the repo? | Default KB location is the plugin's install folder. | M0.3 ADR |
+| 6 | ~~Can agentspec use KBs stored in the repo?~~ | **Resolved:** yes, via `.claude/kb/` and a `CLAUDE.md` rule (no plugin changes). | ADR-001 (#4) |
 
 ## 10. Change Log
 
@@ -211,3 +214,4 @@ cloud only, with no process engineering or ML methods.
 | 0.1     | 2026-10-24 | Initial draft |
 | 0.2     | 2026-10-24 | One anchor dataset for the whole project; Milestone 0 with selection criteria; arcs replaced by milestones → features (one SDD cycle each) → tasks/spikes/questions; project framed as a real engineering project; added the software & ML engineering pillar (§2.5) and engineering principles |
 | 0.3     | 2026-10-24 | Added data science method (§7.2, CRISP-ML(Q) as working hypothesis) and knowledge base policy (§7.3, KBs in the repo, built when needed); Milestone 0 expanded to three spikes (dataset, method, KBs) |
+| 0.4     | 2026-10-25 | M0.3 resolved: project KBs live in `.claude/kb/` with a `CLAUDE.md` rule (§7.3); §9 item 6 closed |
