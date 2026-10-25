@@ -172,7 +172,7 @@ cloud only, with no process engineering or ML methods.
 - **Policy: project KBs live in the repo**, are version-controlled, and are reviewed through PRs.
   By default agentspec writes new domains into the plugin's per-version install folder, which
   would be lost on plugin updates.
-- **Mechanism (spike M0.3, see its ADR):** domains live in `.claude/kb/`, registered in
+- **Mechanism (ADR-001, #4):** domains live in `.claude/kb/`, registered in
   `.claude/kb/_index.yaml`. `CLAUDE.md` declares it as a second KB root for reading and the only
   target for writing; agents that are delegated KB work get these rules in their prompt.
   Findings: `docs/research/kb-location.md`.
@@ -205,7 +205,7 @@ cloud only, with no process engineering or ML methods.
 | 3 | If no public dataset meets the criteria, do we relax §4 and allow our own simulations? | This would be a deliberate change of direction, and would bump the charter's major version. | Milestone 0 |
 | 4 | Which learning resources go with each pillar (books, courses, papers)? | Optional, but useful for depth-first study. | Collect as milestones progress |
 | 5 | Does the chosen data science method fit a one-person learning project, or does it add process overhead? | Adapt it rather than adopt it wholesale. | M0.2 ADR |
-| 6 | ~~Can agentspec use KBs stored in the repo?~~ | **Resolved:** yes, via `.claude/kb/` and a `CLAUDE.md` rule (no plugin changes). | M0.3 ADR |
+| 6 | ~~Can agentspec use KBs stored in the repo?~~ | **Resolved:** yes, via `.claude/kb/` and a `CLAUDE.md` rule (no plugin changes). | ADR-001 (#4) |
 
 ## 10. Change Log
 

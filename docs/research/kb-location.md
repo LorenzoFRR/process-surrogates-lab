@@ -64,4 +64,4 @@ The test domain was deleted after the experiment.
 
 ## Conclusion
 
-Option C, with a delegation rule. See the ADR linked from #1.
+Option C, with a delegation rule. Recorded as ADR-001 (#4).
