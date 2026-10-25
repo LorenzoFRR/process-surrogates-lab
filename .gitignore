@@ -19,3 +19,7 @@ outputs/
 # OS / editor
 .DS_Store
 .vscode/
+
+# Claude Code: ephemeral issue/ADR drafts and per-user settings
+.claude/sdd/drafts/
+.claude/settings.local.json

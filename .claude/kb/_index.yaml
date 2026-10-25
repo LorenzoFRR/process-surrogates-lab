@@ -1,0 +1,7 @@
+# Project KB registry. Same shape as the agentspec plugin's kb/_index.yaml `domains:` block.
+# Limits and templates come from the plugin: ${CLAUDE_PLUGIN_ROOT}/kb/_index.yaml and kb/_templates/.
+
+version: "1.0"
+last_updated: "2026-10-25"
+
+domains: {}
